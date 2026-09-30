@@ -10,12 +10,17 @@ export async function PATCH(req:Request){try{
   const exists=await sql!`SELECT 1 FROM courses WHERE id=${id} LIMIT 1`;
   if(!exists[0])return NextResponse.json({error:"Course not found."},{status:404});
   if(b.published===true){
+    const courseRows=await sql!`SELECT price FROM courses WHERE id=${id} LIMIT 1` as Array<{price:number|string}>;
+    const paid=Number(courseRows[0]?.price||0)>0;
     const quality=await sql!`SELECT
       COUNT(*)::int AS total,
-      COUNT(*) FILTER (WHERE char_length(content)>=1000 AND char_length(transcript)>=700)::int AS ready
-      FROM lessons WHERE course_id=${id}` as Array<{total:number;ready:number}>;
-    const total=Number(quality[0]?.total||0),ready=Number(quality[0]?.ready||0);
+      COUNT(*) FILTER (WHERE char_length(content)>=1000 AND char_length(transcript)>=700)::int AS ready,
+      COUNT(*) FILTER (WHERE type='practical')::int AS practical,
+      COALESCE(SUM(duration_minutes),0)::int AS minutes
+      FROM lessons WHERE course_id=${id}` as Array<{total:number;ready:number;practical:number;minutes:number}>;
+    const total=Number(quality[0]?.total||0),ready=Number(quality[0]?.ready||0),practical=Number(quality[0]?.practical||0),minutes=Number(quality[0]?.minutes||0);
     if(total<6||ready!==total)return NextResponse.json({error:"This course is not ready to publish. Every lesson needs substantial teaching notes and transcript content before learners can access it."},{status:400});
+    if(paid&&(minutes<300||practical<3))return NextResponse.json({error:"Paid courses must contain at least five hours of authored study/practice time and at least three guided practical lessons before publication."},{status:400});
   }
   const hasDetails=typeof b.title==="string";
   if(hasDetails){
