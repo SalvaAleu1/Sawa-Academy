@@ -16,3 +16,39 @@
 .section-head.compact{margin-bottom:18px}
 @media(max-width:900px){.profile-grid,.profile-stats{grid-template-columns:1fr}.nav-actions .role-home{display:inline-flex}}
 @media(max-width:620px){.nav-actions .role-home{display:none}.certificate-row{align-items:flex-start;flex-direction:column}}
+
+.section-copy{max-width:760px;color:var(--muted);margin:8px 0 0}
+.course-image{position:relative;gap:8px;flex-wrap:wrap}
+.free-pill{background:#e8fff4;color:var(--green-dark)}
+.course-facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:20px}
+.course-facts span{background:#eef4f7;border:1px solid var(--line);border-radius:999px;padding:7px 11px;font-size:.82rem;font-weight:750;color:#425568}
+.curriculum-card{margin-top:22px}
+.profile-security-row{display:flex;justify-content:space-between;align-items:center;gap:18px;border-top:1px solid var(--line);margin-top:20px;padding-top:18px}
+.profile-security-row p{margin:3px 0 0}
+.admin-dashboard{display:grid;gap:26px}
+.admin-hero{display:flex;justify-content:space-between;align-items:flex-start;gap:24px;padding-bottom:8px}
+.admin-hero h1{margin:5px 0 8px}
+.admin-hero p{max-width:760px;color:var(--muted);margin:0}
+.admin-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.admin-metrics .card{padding:20px}
+.admin-metrics .price{font-size:2rem}
+.admin-section{display:grid;gap:4px}
+.admin-role-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.admin-role-card{display:block;transition:.2s ease}
+.admin-role-card:hover{transform:translateY(-2px);border-color:#b8d8ca}
+.admin-role-card h3{margin-top:0}
+.admin-role-card strong{color:var(--green-dark)}
+.admin-finance{margin-bottom:20px}
+.status-good{display:inline-block;color:var(--green-dark);background:var(--soft);border-radius:999px;padding:5px 9px}
+.status-warn{display:inline-block;color:#8a5a00;background:#fff6df;border-radius:999px;padding:5px 9px}
+.settings-url{word-break:break-word;font-size:.88rem}
+.settings-card{max-width:760px}
+.admin-course-grid{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr);gap:20px;align-items:start}
+.form-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.checkbox-row{display:flex;gap:22px;flex-wrap:wrap}
+.checkbox-row label{display:flex!important;grid-template-columns:none!important;align-items:center;gap:8px}
+.checkbox-row input{width:auto!important}
+.table-actions{display:flex;gap:8px;flex-wrap:wrap}
+.table-wrap{overflow-x:auto}
+@media(max-width:1050px){.admin-metrics{grid-template-columns:repeat(2,1fr)}.admin-course-grid{grid-template-columns:1fr}}
+@media(max-width:700px){.admin-role-grid,.admin-metrics,.form-two{grid-template-columns:1fr}.admin-hero,.profile-security-row{align-items:flex-start;flex-direction:column}.course-facts{gap:7px}}
