@@ -9,6 +9,14 @@ export async function PATCH(req:Request){try{
   if(!id)return NextResponse.json({error:"Course id is required."},{status:400});
   const exists=await sql!`SELECT 1 FROM courses WHERE id=${id} LIMIT 1`;
   if(!exists[0])return NextResponse.json({error:"Course not found."},{status:404});
+  if(b.published===true){
+    const quality=await sql!`SELECT
+      COUNT(*)::int AS total,
+      COUNT(*) FILTER (WHERE char_length(content)>=1000 AND char_length(transcript)>=700)::int AS ready
+      FROM lessons WHERE course_id=${id}` as Array<{total:number;ready:number}>;
+    const total=Number(quality[0]?.total||0),ready=Number(quality[0]?.ready||0);
+    if(total<6||ready!==total)return NextResponse.json({error:"This course is not ready to publish. Every lesson needs substantial teaching notes and transcript content before learners can access it."},{status:400});
+  }
   const hasDetails=typeof b.title==="string";
   if(hasDetails){
     const title=String(b.title).trim(),subtitle=String(b.subtitle||"").trim(),description=String(b.description||"").trim(),category=String(b.category||"Technology").trim(),level=String(b.level||"Beginner").trim(),duration=String(b.duration||"Self-paced").trim();
