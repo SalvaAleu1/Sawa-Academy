@@ -1,25 +1,20 @@
 import type { Course, Module, Lesson } from "./types";
+import { freeCourseContent } from "./free-course-content";
 
 const image=(id:string)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=80`;
 
-type Topic={title:string;summary:string;practice?:string[];language?:"html"|"javascript"|"python"|"shell"|"text";starter?:string;expected?:string[]};
+type Topic={title:string;summary:string;practice?:string[];language?:"html"|"javascript"|"python"|"shell"|"text";starter?:string;expected?:string[];content?:string;transcript?:string};
 type ModulePlan={title:string;topics:Topic[]};
 type CoursePlan={course:Course;modules:ModulePlan[];legacyModuleId?:string;legacyLessonIds?:string[]};
 
 const theoryLesson=(courseId:string,moduleId:string,id:string,slug:string,position:number,t:Topic):Lesson=>({
   id,moduleId,courseId,slug,title:t.title,type:"theory",position,durationMinutes:25,
   summary:t.summary,
-  content:`${t.summary}
+  content:t.content||freeCourseContent[t.title]||`${t.summary}
 
-Key ideas
-• Understand the core concept and the vocabulary used by practitioners.
-• Connect the concept to realistic technology work and decision-making.
-• Identify common mistakes, limitations and good practice.
-• Finish with a short reflection so you can explain the idea in your own words.
-
-Professional practice
-Use this lesson as a reference, then ask the AI tutor for examples related to your own project or learning goal. Do not move on until you can describe what the concept is, why it matters, and when you would use it.`,
-  transcript:`Your AI instructor introduces ${t.title}. We begin with the practical reason this topic matters, then break it into clear ideas, examples and professional habits. Pause after each section and explain the concept back in your own words before continuing.`
+## Key ideas
+This lesson is currently an outline and should not be treated as a complete long-form lesson. Review the concept, work through a concrete example, identify common mistakes, and explain the idea in your own words before moving on.`,
+  transcript:t.transcript||t.content||freeCourseContent[t.title]||`This lesson introduces ${t.title}. Read the lesson notes carefully and use the AI tutor for clarification where needed.`
 });
 
 const practicalLesson=(courseId:string,moduleId:string,id:string,slug:string,position:number,t:Topic):Lesson=>({
