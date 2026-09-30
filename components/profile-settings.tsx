@@ -1,8 +1,9 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-export function ProfileSettings({name,email}:{name:string;email:string}){
+export function ProfileSettings({name,email,changePasswordHref}:{name:string;email:string;changePasswordHref:string}){
   const r=useRouter();
   const [busy,setBusy]=useState(false);
   const [message,setMessage]=useState("");
@@ -15,19 +16,17 @@ export function ProfileSettings({name,email}:{name:string;email:string}){
     const out=await res.json();setBusy(false);
     if(!res.ok){setError(out.error||"Unable to update profile.");return;}
     setMessage("Profile updated.");
-    (e.currentTarget.elements.namedItem("currentPassword") as HTMLInputElement).value="";
-    (e.currentTarget.elements.namedItem("newPassword") as HTMLInputElement).value="";
     r.refresh();
   }
 
-  return <form className="auth-form profile-form" onSubmit={submit}>
-    <label>Full name<input name="name" defaultValue={name} required minLength={2}/></label>
-    <label>Email address<input value={email} disabled/></label>
-    <div className="profile-password"><h3>Change password</h3><p className="small-note">Leave these fields blank if you only want to update your name.</p></div>
-    <label>Current password<input name="currentPassword" type="password" autoComplete="current-password"/></label>
-    <label>New password<input name="newPassword" type="password" minLength={8} autoComplete="new-password"/></label>
-    {error&&<div className="form-error">{error}</div>}
-    {message&&<div className="form-success">{message}</div>}
-    <button className="btn btn-primary" disabled={busy}>{busy?"Saving…":"Save changes"}</button>
-  </form>;
+  return <div>
+    <form className="auth-form profile-form" onSubmit={submit}>
+      <label>Full name<input name="name" defaultValue={name} required minLength={2}/></label>
+      <label>Email address<input value={email} disabled/></label>
+      {error&&<div className="form-error">{error}</div>}
+      {message&&<div className="form-success">{message}</div>}
+      <button className="btn btn-primary" disabled={busy}>{busy?"Saving…":"Save profile"}</button>
+    </form>
+    <div className="profile-security-row"><div><strong>Password</strong><p className="small-note">Update your account password securely.</p></div><Link href={changePasswordHref} className="btn btn-ghost">Change password</Link></div>
+  </div>;
 }
