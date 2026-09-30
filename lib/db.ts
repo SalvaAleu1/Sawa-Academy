@@ -68,6 +68,10 @@ export async function ensureDb() {
     course_id TEXT NOT NULL REFERENCES courses(id) ON DELETE CASCADE, verification_code TEXT UNIQUE NOT NULL,
     issued_at TIMESTAMPTZ NOT NULL DEFAULT NOW(), UNIQUE(user_id, course_id)
   )`;
+  await sql`CREATE TABLE IF NOT EXISTS rate_limits (
+    key TEXT NOT NULL, window_start BIGINT NOT NULL, count INTEGER NOT NULL DEFAULT 0,
+    PRIMARY KEY (key, window_start)
+  )`;
 
   const count = await sql`SELECT COUNT(*)::int AS count FROM courses` as Array<{count:number}>;
   if ((count[0]?.count ?? 0) === 0) {
@@ -100,3 +104,19 @@ export async function getUser(id:string):Promise<User|null> { await ensureDb(); 
 export async function isEnrolled(userId:string, courseId:string) { await ensureDb(); const r=await sql!`SELECT 1 FROM enrollments WHERE user_id=${userId} AND course_id=${courseId} AND status='active' LIMIT 1`; return r.length>0; }
 export async function getUserEnrollments(userId:string) { await ensureDb(); const r=await sql!`SELECT c.*, e.enrolled_at FROM enrollments e JOIN courses c ON c.id=e.course_id WHERE e.user_id=${userId} AND e.status='active' ORDER BY e.enrolled_at DESC`; return (r as any[]).map(courseFrom); }
 export async function progressFor(userId:string, courseId:string) { await ensureDb(); const rows=await sql!`SELECT lesson_id,completed FROM progress WHERE user_id=${userId} AND course_id=${courseId}`; return new Set((rows as any[]).filter(r=>r.completed).map(r=>r.lesson_id as string)); }
+
+export async function consumeRateLimit(key:string, limit:number, windowSeconds:number) {
+  await ensureDb();
+  const now=Math.floor(Date.now()/1000);
+  const windowStart=Math.floor(now/windowSeconds)*windowSeconds;
+  const rows=await sql!`INSERT INTO rate_limits (key,window_start,count) VALUES (${key},${windowStart},1)
+    ON CONFLICT (key,window_start) DO UPDATE SET count=rate_limits.count+1 RETURNING count` as Array<{count:number}>;
+  if(Math.random()<0.02) await sql!`DELETE FROM rate_limits WHERE window_start < ${now-(windowSeconds*4)}`;
+  return (rows[0]?.count ?? limit+1) <= limit;
+}
+
+export async function lessonBelongsToCourse(lessonId:string, courseId:string) {
+  await ensureDb();
+  const rows=await sql!`SELECT 1 FROM lessons WHERE id=${lessonId} AND course_id=${courseId} LIMIT 1`;
+  return rows.length>0;
+}
