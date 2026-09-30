@@ -267,7 +267,7 @@ modules:[
 
 const slugify=(s:string)=>s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,70);
 
-export const starterCourses:Course[]=plans.map(p=>p.course);
+export const starterCourses:Course[]=plans.map(p=>({...p.course,published:p.course.price===0}));
 export const starterModules:Module[]=[];
 export const starterLessons:Lesson[]=[];
 
