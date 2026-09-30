@@ -1,0 +1,2 @@
+import { VerifyClient } from "./verify-client";
+export default function Verify(){return <main><section className="page-hero"><div className="container"><span className="eyebrow">Certificates</span><h1>Verify a certificate</h1><p>Confirm that a Sawa Academy course certificate was issued by the platform.</p></div></section><section className="section"><div className="container" style={{maxWidth:650}}><VerifyClient/></div></section></main>}
