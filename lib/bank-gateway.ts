@@ -22,6 +22,8 @@ export async function verifyBankPayment(paymentId:string){
   const success=env("BANK_SUCCESS_STATUSES","paid,completed,successful,success").split(",").map(s=>s.trim().toLowerCase()).includes(status); return {success,status,raw:data};
 }
 export function verifyWebhook(raw:string, signature:string|null){
-  const secret=env("BANK_WEBHOOK_SECRET"); if(!secret) return true; if(!signature) return false;
+  const secret=env("BANK_WEBHOOK_SECRET");
+  if(!secret) return !paymentsEnabled();
+  if(!signature) return false;
   const expected=createHmac("sha256",secret).update(raw).digest("hex"); const a=Buffer.from(expected); const b=Buffer.from(signature); return a.length===b.length && timingSafeEqual(a,b);
 }
