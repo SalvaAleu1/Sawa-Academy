@@ -79,7 +79,7 @@ export async function ensureDb() {
     key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
   )`;
 
-  const catalogueVersion="5";
+  const catalogueVersion="6";
   const versionRows=await sql`SELECT value FROM academy_meta WHERE key='catalogue_version' LIMIT 1` as Array<{value:string}>;
   if(versionRows[0]?.value!==catalogueVersion){
     const coursePayload=JSON.stringify(starterCourses.map(c=>({
