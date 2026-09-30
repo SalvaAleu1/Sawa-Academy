@@ -1,5 +1,21 @@
 import type { Course, Module, Lesson } from "./types";
 import { freeCourseContent } from "./free-course-content";
+import { webCourseContent } from "./web-course-content";
+import { pythonCourseContent } from "./python-course-content";
+import { gitCourseContent } from "./git-course-content";
+import { cloudCourseContent } from "./cloud-course-content";
+import { cyberCourseContent } from "./cyber-course-content";
+import { aiCourseContent } from "./ai-course-content";
+
+const lessonContent:Record<string,string>={
+  ...freeCourseContent,
+  ...webCourseContent,
+  ...pythonCourseContent,
+  ...gitCourseContent,
+  ...cloudCourseContent,
+  ...cyberCourseContent,
+  ...aiCourseContent
+};
 
 const image=(id:string)=>`https://images.unsplash.com/${id}?auto=format&fit=crop&w=1200&q=80`;
 
@@ -10,18 +26,18 @@ type CoursePlan={course:Course;modules:ModulePlan[];legacyModuleId?:string;legac
 const theoryLesson=(courseId:string,moduleId:string,id:string,slug:string,position:number,t:Topic):Lesson=>({
   id,moduleId,courseId,slug,title:t.title,type:"theory",position,durationMinutes:25,
   summary:t.summary,
-  content:t.content||freeCourseContent[t.title]||`${t.summary}
+  content:t.content||lessonContent[t.title]||`${t.summary}
 
 ## Key ideas
 This lesson is currently an outline and should not be treated as a complete long-form lesson. Review the concept, work through a concrete example, identify common mistakes, and explain the idea in your own words before moving on.`,
-  transcript:t.transcript||t.content||freeCourseContent[t.title]||`This lesson introduces ${t.title}. Read the lesson notes carefully and use the AI tutor for clarification where needed.`
+  transcript:t.transcript||t.content||lessonContent[t.title]||`This lesson introduces ${t.title}. Read the lesson notes carefully and use the AI tutor for clarification where needed.`
 });
 
 const practicalLesson=(courseId:string,moduleId:string,id:string,slug:string,position:number,t:Topic):Lesson=>({
   id,moduleId,courseId,slug,title:t.title,type:"practical",position,durationMinutes:45,
   summary:t.summary,
-  content:"Complete the guided task, check your result, and use the AI tutor for hints rather than copying a final answer.",
-  transcript:`This guided practice applies ${t.title}. Work one step at a time, check each result, and focus on why each command or decision is correct.`,
+  content:t.content||lessonContent[t.title]||"Complete the guided task, check your result, and use the AI tutor for hints rather than copying a final answer.",
+  transcript:t.transcript||t.content||lessonContent[t.title]||`This guided practice applies ${t.title}. Work one step at a time, check each result, and focus on why each command or decision is correct.`,
   lab:{
     language:t.language||"text",
     starterCode:t.starter||"",
