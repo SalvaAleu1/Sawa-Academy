@@ -52,3 +52,10 @@
 .table-wrap{overflow-x:auto}
 @media(max-width:1050px){.admin-metrics{grid-template-columns:repeat(2,1fr)}.admin-course-grid{grid-template-columns:1fr}}
 @media(max-width:700px){.admin-role-grid,.admin-metrics,.form-two{grid-template-columns:1fr}.admin-hero,.profile-security-row{align-items:flex-start;flex-direction:column}.course-facts{gap:7px}}
+
+.lesson-notes{display:grid;gap:14px}
+.lesson-notes h2{margin:10px 0 0;font-size:1.45rem}
+.lesson-notes h3{margin:8px 0 0;font-size:1.12rem}
+.lesson-notes p{margin:0;color:var(--ink);line-height:1.85}
+.lesson-notes-list{margin:0;padding-left:22px;display:grid;gap:8px}
+.lesson-notes-list li{line-height:1.75}
