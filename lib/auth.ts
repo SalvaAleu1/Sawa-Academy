@@ -9,7 +9,7 @@ const hex = (a:ArrayBuffer) => [...new Uint8Array(a)].map(b=>b.toString(16).padS
 async function sha256(v:string){ return hex(await crypto.subtle.digest("SHA-256",enc.encode(v))); }
 export async function hashPassword(password:string, salt=crypto.randomUUID()) {
   const key=await crypto.subtle.importKey("raw",enc.encode(password),"PBKDF2",false,["deriveBits"]);
-  const bits=await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt:enc.encode(salt),iterations:160000},key,256);
+  const bits=await crypto.subtle.deriveBits({name:"PBKDF2",hash:"SHA-256",salt:enc.encode(salt),iterations:100000},key,256);
   return `${salt}:${hex(bits)}`;
 }
 export async function verifyPassword(password:string, stored:string){ const [salt=""]=stored.split(":"); if(!salt) return false; return stored === await hashPassword(password,salt); }
