@@ -23,21 +23,24 @@ type Topic={title:string;summary:string;practice?:string[];language?:"html"|"jav
 type ModulePlan={title:string;topics:Topic[]};
 type CoursePlan={course:Course;modules:ModulePlan[];legacyModuleId?:string;legacyLessonIds?:string[]};
 
-const theoryLesson=(courseId:string,moduleId:string,id:string,slug:string,position:number,t:Topic):Lesson=>({
-  id,moduleId,courseId,slug,title:t.title,type:"theory",position,durationMinutes:25,
-  summary:t.summary,
-  content:t.content||lessonContent[t.title]||`${t.summary}
+const estimateMinutes=(text:string,practiceSteps=0)=>Math.max(3,Math.ceil(text.trim().split(/\s+/).length/180)+practiceSteps*3);
+const resolvedContent=(t:Topic)=>t.content||lessonContent[t.title]||`${t.summary}
 
 ## Key ideas
-This lesson is currently an outline and should not be treated as a complete long-form lesson. Review the concept, work through a concrete example, identify common mistakes, and explain the idea in your own words before moving on.`,
-  transcript:t.transcript||t.content||lessonContent[t.title]||`This lesson introduces ${t.title}. Read the lesson notes carefully and use the AI tutor for clarification where needed.`
+This lesson is currently an outline and should not be treated as a complete long-form lesson. Review the concept, work through a concrete example, identify common mistakes, and explain the idea in your own words before moving on.`;
+
+const theoryLesson=(courseId:string,moduleId:string,id:string,slug:string,position:number,t:Topic):Lesson=>({
+  id,moduleId,courseId,slug,title:t.title,type:"theory",position,durationMinutes:estimateMinutes(resolvedContent(t)),
+  summary:t.summary,
+  content:resolvedContent(t),
+  transcript:t.transcript||resolvedContent(t),
 });
 
 const practicalLesson=(courseId:string,moduleId:string,id:string,slug:string,position:number,t:Topic):Lesson=>({
-  id,moduleId,courseId,slug,title:t.title,type:"practical",position,durationMinutes:45,
+  id,moduleId,courseId,slug,title:t.title,type:"practical",position,durationMinutes:estimateMinutes(resolvedContent(t),(t.practice||[]).length),
   summary:t.summary,
-  content:t.content||lessonContent[t.title]||"Complete the guided task, check your result, and use the AI tutor for hints rather than copying a final answer.",
-  transcript:t.transcript||t.content||lessonContent[t.title]||`This guided practice applies ${t.title}. Work one step at a time, check each result, and focus on why each command or decision is correct.`,
+  content:resolvedContent(t),
+  transcript:t.transcript||resolvedContent(t),
   lab:{
     language:t.language||"text",
     starterCode:t.starter||"",
@@ -48,7 +51,7 @@ const practicalLesson=(courseId:string,moduleId:string,id:string,slug:string,pos
 
 const plans:CoursePlan[]=[
 {
-course:{id:"course-web",slug:"full-stack-web-development",title:"Full-Stack Web Development",subtitle:"Build responsive, database-backed web applications from browser to deployment.",description:"A project-based learning path covering web foundations, responsive interfaces, JavaScript, React, APIs, databases, authentication, testing, Git and cloud deployment.",category:"Software Development",level:"Beginner to Intermediate",price:120,currency:"USD",duration:"12 weeks",image:image("photo-1498050108023-c5249f4df085"),featured:true,published:true,outcomes:["Build accessible responsive websites","Write modern JavaScript applications","Create reusable React interfaces","Design REST APIs and database-backed features","Implement authentication and validation","Deploy and maintain production web applications"],requirements:["A computer with a modern browser","Reliable internet connection","No prior programming experience required"]},
+course:{id:"course-web",slug:"full-stack-web-development",title:"Full-Stack Web Development",subtitle:"Build responsive, database-backed web applications from browser to deployment.",description:"A project-based learning path covering web foundations, responsive interfaces, JavaScript, React, APIs, databases, authentication, testing, Git and cloud deployment.",category:"Software Development",level:"Beginner to Intermediate",price:120,currency:"USD",duration:"6 weeks",image:image("photo-1498050108023-c5249f4df085"),featured:true,published:true,outcomes:["Build accessible responsive websites","Write modern JavaScript applications","Create reusable React interfaces","Design REST APIs and database-backed features","Implement authentication and validation","Deploy and maintain production web applications"],requirements:["A computer with a modern browser","Reliable internet connection","No prior programming experience required"]},
 legacyModuleId:"module-1",legacyLessonIds:["web-1","web-2"],
 modules:[
 {title:"Web Foundations",topics:[
@@ -78,7 +81,7 @@ modules:[
 ]}
 ]},
 {
-course:{id:"course-python",slug:"python-programming",title:"Python Programming",subtitle:"Learn Python from first principles and build useful automation and data projects.",description:"A practical Python path covering syntax, problem solving, functions, data structures, files, APIs, errors, testing and small portfolio projects.",category:"Programming",level:"Beginner",price:60,currency:"USD",duration:"6 weeks",image:image("photo-1526379879527-8559ecfcaec0"),featured:true,published:true,outcomes:["Write clear Python programs","Use collections and functions effectively","Read and write files","Consume web APIs","Handle errors and test code","Build practical automation projects"],requirements:["A computer","No previous coding experience required"]},
+course:{id:"course-python",slug:"python-programming",title:"Python Programming",subtitle:"Learn Python from first principles and build useful automation and data projects.",description:"A practical Python path covering syntax, problem solving, functions, data structures, files, APIs, errors, testing and small portfolio projects.",category:"Programming",level:"Beginner",price:60,currency:"USD",duration:"5 weeks",image:image("photo-1526379879527-8559ecfcaec0"),featured:true,published:true,outcomes:["Write clear Python programs","Use collections and functions effectively","Read and write files","Consume web APIs","Handle errors and test code","Build practical automation projects"],requirements:["A computer","No previous coding experience required"]},
 legacyModuleId:"module-2",legacyLessonIds:["py-1","py-2"],
 modules:[
 {title:"Python Foundations",topics:[
@@ -133,7 +136,7 @@ modules:[
 ]}
 ]},
 {
-course:{id:"course-cloud",slug:"cloud-and-devops-foundations",title:"Cloud & DevOps Foundations",subtitle:"Build a practical foundation in Linux, cloud infrastructure, containers and CI/CD.",description:"A career-oriented introduction to cloud engineering and DevOps covering Linux, networking, cloud architecture, containers, infrastructure concepts, CI/CD, monitoring and secure deployment.",category:"Cloud & DevOps",level:"Intermediate",price:150,currency:"USD",duration:"10 weeks",image:image("photo-1451187580459-43490279c0fa"),featured:true,published:true,outcomes:["Use Linux command-line tools","Explain cloud compute, storage and networking","Build and run containers","Understand infrastructure as code","Design CI/CD workflows","Apply monitoring and deployment practices"],requirements:["Basic computer skills","Basic programming knowledge recommended"]},
+course:{id:"course-cloud",slug:"cloud-and-devops-foundations",title:"Cloud & DevOps Foundations",subtitle:"Build a practical foundation in Linux, cloud infrastructure, containers and CI/CD.",description:"A career-oriented introduction to cloud engineering and DevOps covering Linux, networking, cloud architecture, containers, infrastructure concepts, CI/CD, monitoring and secure deployment.",category:"Cloud & DevOps",level:"Intermediate",price:150,currency:"USD",duration:"6 weeks",image:image("photo-1451187580459-43490279c0fa"),featured:true,published:true,outcomes:["Use Linux command-line tools","Explain cloud compute, storage and networking","Build and run containers","Understand infrastructure as code","Design CI/CD workflows","Apply monitoring and deployment practices"],requirements:["Basic computer skills","Basic programming knowledge recommended"]},
 legacyModuleId:"module-4",legacyLessonIds:["cloud-1","cloud-2"],
 modules:[
 {title:"Cloud and Linux Foundations",topics:[
@@ -163,7 +166,7 @@ modules:[
 ]}
 ]},
 {
-course:{id:"course-cyber",slug:"cybersecurity-foundations",title:"Cybersecurity Foundations",subtitle:"Develop defensive security thinking for accounts, devices, networks and applications.",description:"A defensive-first course covering risk, identity, device security, networking, phishing, web security, incident response and responsible security practice.",category:"Cybersecurity",level:"Beginner",price:75,currency:"USD",duration:"6 weeks",image:image("photo-1563013544-824ae1b704d3"),featured:false,published:true,outcomes:["Assess common cyber risks","Protect accounts and devices","Recognize phishing and social engineering","Explain network and web security basics","Apply secure configuration habits","Respond to common security incidents"],requirements:["A computer","Basic digital literacy","All exercises are defensive and authorized"]},
+course:{id:"course-cyber",slug:"cybersecurity-foundations",title:"Cybersecurity Foundations",subtitle:"Develop defensive security thinking for accounts, devices, networks and applications.",description:"A defensive-first course covering risk, identity, device security, networking, phishing, web security, incident response and responsible security practice.",category:"Cybersecurity",level:"Beginner",price:75,currency:"USD",duration:"5 weeks",image:image("photo-1563013544-824ae1b704d3"),featured:false,published:true,outcomes:["Assess common cyber risks","Protect accounts and devices","Recognize phishing and social engineering","Explain network and web security basics","Apply secure configuration habits","Respond to common security incidents"],requirements:["A computer","Basic digital literacy","All exercises are defensive and authorized"]},
 legacyModuleId:"module-5",legacyLessonIds:["cyber-1","cyber-2"],
 modules:[
 {title:"Security Foundations",topics:[
