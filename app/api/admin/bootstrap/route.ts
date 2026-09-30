@@ -20,7 +20,7 @@ export async function POST(req:Request){
 
     await ensureDb();
     const admins=await sql!`SELECT id,email FROM users WHERE role='admin' LIMIT 1`;
-    if(admins[0]&&String(admins[0].email).toLowerCase()!==configuredEmail) return NextResponse.json({error:"An administrator has already been configured."},{status:409});
+    if(admins[0]) return NextResponse.json({error:"An administrator has already been configured."},{status:409});
 
     let user=await findUserByEmail(configuredEmail);
     let id:string;
