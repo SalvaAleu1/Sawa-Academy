@@ -1,3 +1,4 @@
-import type { Metadata } from "next"; import "./globals.css"; import { SiteHeader } from "@/components/site-header"; import { SiteFooter } from "@/components/site-footer";
+import type { Metadata } from "next";
+export const dynamic="force-dynamic"; import "./globals.css"; import { SiteHeader } from "@/components/site-header"; import { SiteFooter } from "@/components/site-footer";
 export const metadata:Metadata={metadataBase:new URL(process.env.NEXT_PUBLIC_APP_URL||"https://sawa.academy"),title:{default:"Sawa Academy — Learn technology by building",template:"%s | Sawa Academy"},description:"AI-powered practical technology courses with guided lessons, hands-on labs, progress tracking and certificates.",openGraph:{title:"Sawa Academy",description:"Learn technology by building with AI-guided courses and practical labs.",type:"website"}};
 export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="en"><body><SiteHeader/>{children}<SiteFooter/></body></html>}
