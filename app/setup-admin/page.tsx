@@ -1,0 +1,2 @@
+import { AdminSetupForm } from "./setup-form";
+export default function SetupAdmin(){return <main className="auth-shell"><div className="auth-card"><span className="eyebrow">Sawa Academy</span><h1>Administrator setup</h1><p>Use the private setup key configured for this deployment to create or secure the primary administrator account.</p><AdminSetupForm/></div></main>}
