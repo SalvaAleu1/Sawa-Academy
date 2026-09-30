@@ -1,0 +1,3 @@
+import { ensureDb,sql } from "@/lib/db";
+export const dynamic="force-dynamic";
+export default async function Students(){await ensureDb();const rows=await sql!`SELECT u.id,u.name,u.email,u.created_at,COUNT(e.id)::int AS enrollments FROM users u LEFT JOIN enrollments e ON e.user_id=u.id GROUP BY u.id ORDER BY u.created_at DESC`;return <div><span className="eyebrow">Learners</span><h1>Students</h1><table className="table"><thead><tr><th>Name</th><th>Email</th><th>Enrollments</th><th>Joined</th></tr></thead><tbody>{(rows as any[]).map(r=><tr key={r.id}><td>{r.name}</td><td>{r.email}</td><td>{r.enrollments}</td><td>{new Date(r.created_at).toLocaleDateString()}</td></tr>)}</tbody></table></div>}
