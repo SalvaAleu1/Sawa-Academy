@@ -35,7 +35,7 @@ export default async function ProfilePage(){
     </div>
 
     <div className="profile-grid">
-      <section className="card"><h2>Profile settings</h2><ProfileSettings name={user.name} email={user.email}/></section>
+      <section className="card"><h2>Profile settings</h2><ProfileSettings name={user.name} email={user.email} changePasswordHref="/profile/change-password"/></section>
       <section className="card"><div className="section-head compact"><div><span className="eyebrow">Learning</span><h2>Course progress</h2></div><Link href="/dashboard" className="btn btn-ghost">My Learning</Link></div>
         {progress.length===0?<p>You have not enrolled in a course yet.</p>:<div className="profile-progress-list">{progress.map(({course,pct,done,total})=><div className="profile-progress" key={course.id}><div className="course-meta"><strong>{course.title}</strong><span>{done}/{total} lessons</span></div><div className="progress-bar"><span style={{width:`${pct}%`}}/></div><div className="course-meta"><span>{pct}% complete</span><Link href={`/courses/${course.slug}`}><strong>View course</strong></Link></div></div>)}</div>}
       </section>
