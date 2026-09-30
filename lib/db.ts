@@ -72,16 +72,62 @@ export async function ensureDb() {
     key TEXT NOT NULL, window_start BIGINT NOT NULL, count INTEGER NOT NULL DEFAULT 0,
     PRIMARY KEY (key, window_start)
   )`;
+  await sql`CREATE TABLE IF NOT EXISTS academy_meta (
+    key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  )`;
+  await sql`CREATE TABLE IF NOT EXISTS academy_settings (
+    key TEXT PRIMARY KEY, value TEXT NOT NULL, updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
+  )`;
 
-  const count = await sql`SELECT COUNT(*)::int AS count FROM courses` as Array<{count:number}>;
-  if ((count[0]?.count ?? 0) === 0) {
-    for (const c of starterCourses) {
-      await sql`INSERT INTO courses (id,slug,title,subtitle,description,category,level,price,currency,duration,image,featured,published,outcomes,requirements)
-        VALUES (${c.id},${c.slug},${c.title},${c.subtitle},${c.description},${c.category},${c.level},${c.price},${c.currency},${c.duration},${c.image},${c.featured},${c.published},${JSON.stringify(c.outcomes)}::jsonb,${JSON.stringify(c.requirements)}::jsonb)`;
-    }
-    for (const m of starterModules) await sql`INSERT INTO modules (id,course_id,title,position) VALUES (${m.id},${m.courseId},${m.title},${m.position})`;
-    for (const l of starterLessons) await sql`INSERT INTO lessons (id,module_id,course_id,slug,title,type,position,duration_minutes,summary,transcript,content,lab)
-      VALUES (${l.id},${l.moduleId},${l.courseId},${l.slug},${l.title},${l.type},${l.position},${l.durationMinutes},${l.summary},${l.transcript},${l.content},${l.lab ? JSON.stringify(l.lab) : null}::jsonb)`;
+  const catalogueVersion="2";
+  const versionRows=await sql`SELECT value FROM academy_meta WHERE key='catalogue_version' LIMIT 1` as Array<{value:string}>;
+  if(versionRows[0]?.value!==catalogueVersion){
+    const coursePayload=JSON.stringify(starterCourses.map(c=>({
+      id:c.id,slug:c.slug,title:c.title,subtitle:c.subtitle,description:c.description,category:c.category,level:c.level,
+      price:c.price,currency:c.currency,duration:c.duration,image:c.image,featured:c.featured,published:c.published,
+      outcomes:c.outcomes,requirements:c.requirements
+    })));
+    await sql`WITH data AS (
+      SELECT * FROM jsonb_to_recordset(${coursePayload}::jsonb) AS x(
+        id text,slug text,title text,subtitle text,description text,category text,level text,price numeric,currency text,
+        duration text,image text,featured boolean,published boolean,outcomes jsonb,requirements jsonb
+      )
+    )
+    INSERT INTO courses (id,slug,title,subtitle,description,category,level,price,currency,duration,image,featured,published,outcomes,requirements)
+    SELECT id,slug,title,subtitle,description,category,level,price,currency,duration,image,featured,published,outcomes,requirements FROM data
+    ON CONFLICT (id) DO UPDATE SET
+      slug=EXCLUDED.slug,title=EXCLUDED.title,subtitle=EXCLUDED.subtitle,description=EXCLUDED.description,
+      category=EXCLUDED.category,level=EXCLUDED.level,price=EXCLUDED.price,currency=EXCLUDED.currency,
+      duration=EXCLUDED.duration,image=EXCLUDED.image,featured=EXCLUDED.featured,published=EXCLUDED.published,
+      outcomes=EXCLUDED.outcomes,requirements=EXCLUDED.requirements`;
+
+    const modulePayload=JSON.stringify(starterModules.map(m=>({id:m.id,course_id:m.courseId,title:m.title,position:m.position})));
+    await sql`WITH data AS (
+      SELECT * FROM jsonb_to_recordset(${modulePayload}::jsonb) AS x(id text,course_id text,title text,position integer)
+    )
+    INSERT INTO modules (id,course_id,title,position)
+    SELECT id,course_id,title,position FROM data
+    ON CONFLICT (id) DO UPDATE SET course_id=EXCLUDED.course_id,title=EXCLUDED.title,position=EXCLUDED.position`;
+
+    const lessonPayload=JSON.stringify(starterLessons.map(l=>({
+      id:l.id,module_id:l.moduleId,course_id:l.courseId,slug:l.slug,title:l.title,type:l.type,position:l.position,
+      duration_minutes:l.durationMinutes,summary:l.summary,transcript:l.transcript,content:l.content,lab:l.lab??null
+    })));
+    await sql`WITH data AS (
+      SELECT * FROM jsonb_to_recordset(${lessonPayload}::jsonb) AS x(
+        id text,module_id text,course_id text,slug text,title text,type text,position integer,duration_minutes integer,
+        summary text,transcript text,content text,lab jsonb
+      )
+    )
+    INSERT INTO lessons (id,module_id,course_id,slug,title,type,position,duration_minutes,summary,transcript,content,lab)
+    SELECT id,module_id,course_id,slug,title,type,position,duration_minutes,summary,transcript,content,lab FROM data
+    ON CONFLICT (id) DO UPDATE SET
+      module_id=EXCLUDED.module_id,course_id=EXCLUDED.course_id,slug=EXCLUDED.slug,title=EXCLUDED.title,type=EXCLUDED.type,
+      position=EXCLUDED.position,duration_minutes=EXCLUDED.duration_minutes,summary=EXCLUDED.summary,
+      transcript=EXCLUDED.transcript,content=EXCLUDED.content,lab=EXCLUDED.lab`;
+
+    await sql`INSERT INTO academy_meta (key,value,updated_at) VALUES ('catalogue_version',${catalogueVersion},NOW())
+      ON CONFLICT (key) DO UPDATE SET value=EXCLUDED.value,updated_at=NOW()`;
   }
   initialized = true;
 }
