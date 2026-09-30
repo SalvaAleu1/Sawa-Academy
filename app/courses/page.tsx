@@ -1,0 +1,3 @@
+import { CourseCard } from "@/components/course-card"; import { getCourses } from "@/lib/db";
+export const dynamic="force-dynamic";
+export default async function Courses(){const courses=await getCourses();return <main><section className="page-hero"><div className="container"><span className="eyebrow">Course catalogue</span><h1>Choose what you want to learn.</h1><p>Build practical skills in software development, cloud, cybersecurity, AI and essential developer tools.</p></div></section><section className="section"><div className="container"><div className="course-grid">{courses.map(c=><CourseCard key={c.id} course={c}/>)}</div></div></section></main>}
