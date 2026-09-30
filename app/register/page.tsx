@@ -1,0 +1,2 @@
+import Link from "next/link"; import { AuthForm } from "@/components/auth-form";
+export default function Register(){return <main className="auth-shell"><div className="auth-card"><span className="eyebrow">Start learning</span><h1>Create your account</h1><p>Join Sawa Academy and keep your courses, progress and certificates in one place.</p><AuthForm mode="register"/><p className="small-note">Already have an account? <Link href="/login"><strong>Sign in</strong></Link></p></div></main>}
