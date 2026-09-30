@@ -242,5 +242,477 @@ Write down what you would do if your email account were compromised: change the 
 Create a one-page plan with five headings: Accounts, Privacy, Verification, Reporting and Recovery. Under each heading, write two concrete actions. Store the plan somewhere you can review every few months.
 
 ## Key takeaways
-Online safety is not one setting. It is a combination of good authentication, careful sharing, independent verification, clear reporting paths and a recovery plan.`
+Online safety is not one setting. It is a combination of good authentication, careful sharing, independent verification, clear reporting paths and a recovery plan.`,
+"Devices, Operating Systems and Applications":`## Learning objectives
+You will learn the difference between hardware, operating systems and applications, and how these layers work together when you use a phone, tablet or computer.
+
+## Hardware and software
+Hardware is the physical equipment: processor, memory, storage, screen, keyboard, camera, battery and network components. Software is the set of instructions that tells the hardware what to do.
+
+An operating system such as Android, Windows, macOS, iOS or Linux manages the device. It handles files, memory, applications, user accounts, permissions and hardware access. Applications run on top of the operating system to perform specific tasks such as browsing, messaging, writing documents or editing photographs.
+
+## Why this matters
+When something fails, identifying the layer helps you troubleshoot. If one application crashes but everything else works, the problem may be the application. If several applications cannot connect to the internet, the problem may be the network or system settings.
+
+## Updates
+Operating-system and application updates can add features, improve compatibility and fix security problems. Delaying important security updates can leave known weaknesses unpatched.
+
+## Practical check
+Open the settings page on your device and identify the operating-system version. Then identify three applications you use frequently and check whether automatic updates are enabled.
+
+## Key takeaways
+Hardware is the physical device, the operating system manages the device, and applications perform user tasks. Understanding these layers makes troubleshooting and security decisions easier.`,
+
+"Files, Folders and Storage":`## Learning objectives
+You will learn how files and folders are organized, why clear names matter, and the difference between local storage, removable storage and cloud storage.
+
+## Files and folders
+A file stores information such as a document, photograph, spreadsheet, presentation or video. Folders help organize related files. Good organization reduces the time spent searching and lowers the risk of using the wrong version.
+
+Use names that describe the content and, when useful, include a date or version. A name such as "YIFO-budget-2026-09.xlsx" is more useful than "Document final final 2.xlsx".
+
+## Local and cloud storage
+Local storage is physically attached to your device. Cloud storage keeps files on remote servers and synchronizes them through the internet. Cloud storage can make sharing and backup easier, but access depends on your account security and internet connection.
+
+Removable drives are useful for transfer and offline backup, but they can be lost or damaged.
+
+## Version control for ordinary documents
+Avoid creating many confusing copies. Decide which folder contains the current working version. For collaborative files, cloud tools with version history are often better than repeatedly sending attachments.
+
+## Practical activity
+Create a folder called Learning. Inside it, create subfolders for Courses, Certificates and Projects. Move or copy three relevant files into the correct folders and rename them clearly.
+
+## Key takeaways
+Use a predictable folder structure, descriptive filenames and an appropriate storage method. Organization is a basic digital skill, not just a cosmetic preference.`,
+
+"Keyboard, Browser and Search Skills":`## Learning objectives
+You will improve basic navigation, browser use and search habits so you can find information more efficiently.
+
+## Keyboard efficiency
+Common shortcuts save time. Copy, paste, undo, search within a page and switch between applications are useful across many systems. The exact keys vary by operating system, but the underlying actions are similar.
+
+## Browser basics
+A browser displays websites. Tabs let you keep several pages open, bookmarks save useful pages, and the address bar can accept either a web address or a search query.
+
+Pay attention to the domain in the address bar. A familiar page design does not prove that the site is genuine.
+
+## Better searching
+Good searches use specific terms. Instead of searching "scholarship," search for the program, eligible country, year and official source. Quotation marks can help locate an exact phrase. Adding a trusted domain can narrow results, for example searching within a university or government website.
+
+## Evaluate the result
+A top search result is not automatically the best source. Check who published it, when it was updated and whether it directly supports the claim you need.
+
+## Practical activity
+Search for one official educational opportunity. Find the official source, eligibility criteria, deadline and application link. Compare it with one secondary page and note any differences.
+
+## Key takeaways
+Efficient navigation combines keyboard habits, browser awareness and precise searching. Search results are starting points; source evaluation still matters.`,
+
+"Email and Professional Messaging":`## Learning objectives
+You will learn how to write clear emails and professional messages that make it easy for the recipient to understand and respond.
+
+## Subject lines
+A useful subject line states the purpose: "Request for transcript — Salva Aleu" is clearer than "Hello" or "Urgent."
+
+## Message structure
+Start with an appropriate greeting. In the first sentence, explain why you are writing. Add only the context needed to act on the request. If you need something, state the request directly and include a reasonable deadline when relevant.
+
+End with your name and any useful contact information.
+
+## Tone
+Professional does not mean overly formal. It means respectful, clear and concise. Avoid sending a long emotional message when a short factual one would solve the problem.
+
+## Attachments
+Mention the attachment in the message and use a clear filename. Before sending, confirm that the correct file is attached and that it does not contain information intended for someone else.
+
+## Example
+Instead of "Send me the letter quickly," write: "Could you please share my admission letter by Friday, 3 October? I need it for a scholarship application."
+
+## Practical activity
+Draft an email requesting a document from a university office. Include a specific subject, short context, clear request and polite closing.
+
+## Key takeaways
+A strong message answers four questions: who are you, why are you writing, what do you need, and what should happen next?`,
+
+"Video Meetings and Online Collaboration":`## Learning objectives
+You will learn practical habits for online meetings, shared documents and remote teamwork.
+
+## Before a meeting
+Check the meeting time and time zone. Test your microphone and internet connection. Join from a quiet place where possible and use headphones if background noise is a problem.
+
+## During a meeting
+Mute when you are not speaking in a noisy environment. Use the chat for useful links or short questions, not side conversations that distract from the meeting.
+
+If the meeting has decisions or assigned tasks, record them clearly.
+
+## Shared documents
+Collaboration tools allow several people to work on one file. Use comments when you want discussion and direct edits when you have permission to change the content.
+
+Avoid creating unnecessary duplicate files when one shared document can preserve the current version and edit history.
+
+## Permissions
+Share only with the people who need access. Choose view, comment or edit permission based on the person's role.
+
+## Practical activity
+Create a short meeting agenda with three items. Add a section for decisions, assigned actions, responsible person and due date.
+
+## Key takeaways
+Good online collaboration depends on preparation, clear permissions, documented decisions and disciplined communication.`,
+
+"Digital Identity and Reputation":`## Learning objectives
+You will learn how to present yourself accurately online and how digital activity can strengthen or weaken professional credibility.
+
+## Identity is more than a profile photo
+Your digital identity includes your name, biography, portfolio, posts, comments, memberships and the quality of your communication. Different platforms may show different parts of your identity, but they can still be connected.
+
+## Accuracy matters
+Do not claim qualifications, jobs or projects you do not have. A smaller but truthful portfolio is stronger than an impressive profile that cannot be verified.
+
+## Build evidence
+If you are learning technology, publish real projects with clear explanations. If you work in community development, describe the role and results accurately. Evidence helps people understand what you can actually do.
+
+## Review periodically
+Old biographies, inactive links and outdated roles create confusion. Review your important public profiles every few months.
+
+## Practical activity
+Write a two-sentence professional biography that states who you are, what you are currently doing and one area you are developing. Remove vague claims such as "world-class expert" unless there is clear evidence.
+
+## Key takeaways
+A professional digital identity is accurate, current and supported by evidence. Reputation is built through consistent behavior, not just profile design.`,
+
+"Documents, Spreadsheets and Presentations":`## Learning objectives
+You will understand when to use documents, spreadsheets and presentations, and how to structure information effectively in each format.
+
+## Documents
+Use a document for reports, letters, proposals, policies and long-form written material. Use headings and consistent formatting so readers can navigate quickly.
+
+## Spreadsheets
+Use a spreadsheet when information is tabular or calculations matter. Keep one type of value per column, use clear headers and avoid mixing unrelated datasets in one table.
+
+Formulas can automate totals and calculations, but they should be checked with known examples before being trusted.
+
+## Presentations
+Slides support a speaker or communicate a concise visual story. A slide should not be a crowded page of text. Use a clear title, one main idea and only the supporting information needed.
+
+## Choosing the right tool
+Do not use a spreadsheet simply because it has cells, or a slide deck because it looks impressive. Choose the format based on the work.
+
+## Practical activity
+Take one project idea and create three outlines: a one-page written brief, a simple budget table and a five-slide presentation structure. Notice how the same project requires different information in each format.
+
+## Key takeaways
+Documents explain, spreadsheets organize and calculate, and presentations communicate key ideas visually. Good digital work starts by choosing the right format.`,
+
+"Cloud Sharing and Permissions":`## Learning objectives
+You will learn how cloud sharing works and how to choose permissions that protect files while still enabling collaboration.
+
+## Link sharing versus named access
+A public or link-access file may be available to anyone who receives the link, depending on the setting. Named access limits the file to specific accounts.
+
+For sensitive work, named access is usually safer.
+
+## Permission levels
+View permission allows reading. Comment permission allows feedback without changing the original content. Edit permission allows modification and should be given only when necessary.
+
+## Ownership and offboarding
+For organizational files, avoid storing everything permanently in one person's personal account. When someone leaves a project, access should be reviewed and unnecessary permissions removed.
+
+## Practical activity
+Choose one non-sensitive file in your cloud storage. Open its sharing settings and identify who has access. Decide whether each person needs view, comment or edit permission.
+
+## Common mistake
+"Anyone with the link can edit" is convenient but risky for important files. A link can be forwarded without your knowledge.
+
+## Key takeaways
+Cloud sharing is an access-control decision. Give the minimum permission required, review access periodically and avoid uncontrolled editing links for important information.`,
+
+"Personal Digital Organization":`## Learning objectives
+You will learn how to create a simple personal system for files, tasks, calendars and notes without relying on memory.
+
+## One trusted place for each type of information
+Choose where tasks live, where appointments live and where important files live. Using five different systems for the same purpose creates confusion.
+
+A calendar is best for events tied to time. A task list is better for actions. Notes are useful for reference material and ideas.
+
+## Capture first, organize later
+When something important appears, record it in the correct system instead of trying to remember it. Then review your task list and calendar regularly.
+
+## Weekly review
+Once a week, check upcoming deadlines, unfinished tasks and files that need organization. This habit prevents small problems from becoming urgent.
+
+## Naming and search
+Use consistent names so search works. If every file is called "final," search cannot help you much.
+
+## Practical activity
+Create a simple weekly system: one calendar, one task list and one main cloud folder. Add three real commitments, three tasks and three useful documents.
+
+## Key takeaways
+Digital organization should reduce mental load. A small reliable system is better than a complicated system you do not maintain.`,
+
+"Passwords, MFA and Account Recovery":`## Learning objectives
+You will learn how password reuse creates risk, why multi-factor authentication helps and how recovery settings affect account security.
+
+## Unique passwords
+If one website is breached and you reused the same password elsewhere, attackers can try the exposed password on your email, social media or financial accounts.
+
+Use a unique password for every important account. A reputable password manager can help generate and store them.
+
+## Multi-factor authentication
+MFA requires another factor in addition to the password. An authenticator app or security key is generally stronger than relying only on SMS, though any available MFA is usually better than password-only login.
+
+Never share one-time codes with someone who contacts you unexpectedly.
+
+## Recovery settings
+Your recovery email and phone number can become alternate paths into the account. Keep them current and protected.
+
+## Practical activity
+List your five most important accounts. For each, record whether the password is unique, whether MFA is enabled and whether recovery details are current. Fix the highest-risk account first.
+
+## Key takeaways
+Account security depends on unique passwords, strong second factors and trustworthy recovery channels. Protect your email especially carefully because it can reset many other accounts.`,
+
+"Phishing, Scams and Unsafe Links":`## Learning objectives
+You will learn how to inspect suspicious messages and links without relying on appearance alone.
+
+## Phishing
+Phishing attempts to make you reveal credentials, send money, install software or open a malicious file by pretending to be a trusted person or organization.
+
+## Inspect before acting
+Check the sender address, not just the display name. Look at the destination domain before opening a link. Be cautious with shortened links when the destination is hidden.
+
+Urgency, threats and unexpected rewards are common pressure tactics.
+
+## Use independent navigation
+If a message says there is a problem with your bank or email account, open the official application or type the known website address yourself instead of using the link in the message.
+
+## Attachments
+Unexpected executable files, archives or documents requesting unusual permissions should be treated cautiously.
+
+## Practical activity
+Create a checklist with five things you will inspect before following an unexpected login or payment link.
+
+## Key takeaways
+The safest response to a suspicious link is often not to inspect it deeply but to avoid it and verify the claim through an independent trusted channel.`,
+
+"Fact-checking and Source Evaluation":`## Learning objectives
+You will learn a repeatable method for deciding whether an online claim deserves your trust.
+
+## Start with the claim
+Write the claim in one sentence. Separate what is being asserted from commentary or emotion around it.
+
+## Check the source
+Ask who published the information, what expertise or access they have and whether they provide evidence. An attractive website is not evidence by itself.
+
+## Check the date and context
+Old information is frequently reshared as if it were new. A genuine photograph can still mislead if it is attached to the wrong event.
+
+## Look for independent confirmation
+For important claims, find other credible sources that reached the information independently. Ten websites copying the same original post are not ten independent confirmations.
+
+## Primary sources
+When possible, locate the original document, dataset, statement or official notice. Then compare how secondary sources describe it.
+
+## Practical activity
+Choose one public claim. Record the original source, date, evidence, one independent confirmation and any uncertainty that remains.
+
+## Key takeaways
+Good fact-checking is not about instantly proving everything true or false. It is about tracing evidence, context and source quality before repeating a claim.`,
+
+"How Technology Teams Work":`## Learning objectives
+You will understand the major responsibilities inside a technology team and why successful products require more than programmers.
+
+## Products are built by different roles
+Software engineers build and maintain technical systems. Product managers help define problems and priorities. Designers focus on user experience. Quality engineers test behavior. DevOps and platform engineers improve delivery and reliability. Security specialists reduce risk. Support teams help users and identify recurring problems.
+
+Small organizations may combine several responsibilities in one person.
+
+## Collaboration matters
+A strong engineer who cannot explain decisions, review work or understand user needs can still create problems for a team. Technology work is partly technical and partly collaborative.
+
+## Typical workflow
+A problem is identified, requirements are clarified, a solution is designed, implementation begins, changes are reviewed and tested, the system is deployed and its behavior is monitored.
+
+## Practical reflection
+Choose an application you use regularly. Imagine the people required to build and operate it. List at least five roles and one responsibility for each.
+
+## Key takeaways
+Technology careers exist across design, engineering, operations, security, data and support. Understanding how roles interact helps you choose a path and work effectively with others.`,
+
+"Software Development Careers":`## Learning objectives
+You will compare common software-development roles and understand the skills shared between them.
+
+## Front-end development
+Front-end developers build interfaces that users interact with. They commonly work with HTML, CSS, JavaScript and frameworks such as React.
+
+## Back-end development
+Back-end developers build server logic, APIs, databases, authentication and integrations.
+
+## Full-stack development
+Full-stack developers work across both sides. This does not mean knowing every technology. It means being able to build and connect the major parts of an application.
+
+## Mobile and software engineering
+Mobile developers specialize in applications for mobile platforms. Software engineering is a broader term that can include web, desktop, embedded and distributed systems.
+
+## Shared foundations
+Problem solving, programming fundamentals, Git, debugging, testing and communication matter across these roles.
+
+## Practical reflection
+Choose one role and find three real job descriptions. Record the skills that appear repeatedly and separate essential requirements from optional technologies.
+
+## Key takeaways
+Do not choose a career only because a framework is popular. Choose a problem area you enjoy, learn strong fundamentals and build projects that demonstrate the relevant skills.`,
+
+"Cloud, DevOps and Infrastructure Careers":`## Learning objectives
+You will understand the work behind cloud platforms, deployments and reliable infrastructure.
+
+## Cloud engineering
+Cloud engineers design and operate infrastructure using services for compute, storage, databases, identity and networking.
+
+## DevOps and platform engineering
+DevOps is a way of improving collaboration and delivery through automation, feedback and shared operational responsibility. Platform engineers build internal systems that make it easier for development teams to deploy safely.
+
+## Site reliability engineering
+SRE focuses on reliability using engineering methods, measurement and automation.
+
+## Core foundations
+Linux, networking, scripting, Git, cloud concepts, containers, CI/CD, monitoring and security are common foundations.
+
+## Practical reflection
+Draw a simple path from a developer pushing code to users accessing a deployed application. Identify where source control, CI, containers, cloud infrastructure and monitoring might fit.
+
+## Key takeaways
+Infrastructure careers combine systems thinking, automation and reliability. Strong Linux and networking foundations remain valuable even when tools change.`,
+
+"Cybersecurity Careers":`## Learning objectives
+You will explore several defensive cybersecurity career families and the foundations they share.
+
+## Security operations
+Security operations teams monitor systems, investigate alerts and coordinate incident response.
+
+## Governance, risk and compliance
+GRC work focuses on policies, risk assessment, controls, audits and regulatory requirements.
+
+## Application and cloud security
+Application security improves the security of software design and development. Cloud security focuses on identity, configuration, network controls, data protection and monitoring in cloud environments.
+
+## Security engineering
+Security engineers build and maintain technical controls such as identity systems, logging, endpoint protection and secure infrastructure.
+
+## Shared foundations
+Networking, operating systems, authentication, scripting, cloud basics, documentation and ethical practice are important across many security roles.
+
+## Practical reflection
+Choose one defensive security role. Find two job descriptions and list repeated technical and non-technical skills.
+
+## Key takeaways
+Cybersecurity is not one job. Choose a direction, build broad technical foundations and practice only in authorized environments.`,
+
+"Data and AI Careers":`## Learning objectives
+You will distinguish common data and AI roles and understand the skills that connect them.
+
+## Data analysis
+Data analysts clean, explore and communicate data to support decisions. Spreadsheets, SQL, visualization and basic statistics are common tools.
+
+## Data engineering
+Data engineers build pipelines and systems that collect, transform and deliver reliable data.
+
+## Machine learning
+Machine-learning engineers build, evaluate and deploy predictive systems. Strong programming, data and mathematical foundations are important.
+
+## Applied AI
+Applied AI roles integrate existing models into products and workflows. They require more than prompting: evaluation, data handling, product design, privacy and software engineering can all matter.
+
+## Practical reflection
+Take one problem such as predicting food insecurity or improving customer support. Describe how an analyst, data engineer and applied AI engineer might contribute differently.
+
+## Key takeaways
+Data and AI careers overlap but are not interchangeable. Start with programming, data literacy and problem solving, then specialize based on the kind of work you want to do.`,
+
+"Technical Support and Systems Roles":`## Learning objectives
+You will understand why technical support and systems administration can be strong entry points into technology careers.
+
+## Technical support
+Support specialists diagnose user problems, document solutions, manage accounts and help people use systems effectively.
+
+## Systems administration
+System administrators manage operating systems, user access, updates, backups, networks and services.
+
+## Skills developed
+These roles build troubleshooting discipline, communication, operating-system knowledge, networking and security awareness.
+
+## Career progression
+Support experience can lead toward systems administration, cloud engineering, networking, cybersecurity or platform operations when combined with deliberate learning.
+
+## Practical reflection
+Write a troubleshooting flow for a user who cannot connect to a website. Start with simple checks and progress toward network and service checks.
+
+## Key takeaways
+Entry-level support is not "less technical" work. Done well, it develops the diagnostic thinking required across many infrastructure and security careers.`,
+
+"Foundational Skills Employers Look For":`## Learning objectives
+You will identify transferable skills that matter across technology roles and learn how to demonstrate them.
+
+## Problem solving
+Employers value people who can break a vague problem into smaller questions, test assumptions and document what they tried.
+
+## Communication
+Technical work involves explaining decisions, asking useful questions, writing documentation and collaborating with people who have different expertise.
+
+## Core technical habits
+Git, command-line basics, file organization, basic networking and secure account practices are useful across many roles.
+
+## Evidence
+Saying "I know Python" is weaker than showing a project, explaining the problem, linking the code and describing what you learned.
+
+## Practical reflection
+Create a table with three columns: skill, evidence you already have, and evidence you still need to build. Include at least five skills relevant to your target role.
+
+## Key takeaways
+Employability grows from demonstrated skills, not course certificates alone. Build evidence through projects, collaboration and clear communication.`,
+
+"Portfolio and Project Evidence":`## Learning objectives
+You will learn what makes a useful technology portfolio and how to present projects honestly.
+
+## A portfolio is evidence
+A good project shows what problem you addressed, what you built, the tools you used, the decisions you made and what the result does.
+
+## Quality over quantity
+Three understandable projects are often more useful than twenty unfinished repositories.
+
+## Documentation
+Each project should have a clear title, short description, setup instructions when relevant, screenshots or demonstration links and an explanation of key decisions.
+
+## Be honest about collaboration
+If a project was built by a team or with AI assistance, describe your actual contribution. Do not claim complete authorship of work you did not do.
+
+## Practical activity
+Choose one existing project. Rewrite its description using four headings: Problem, Approach, What I Built and What I Learned.
+
+## Key takeaways
+A portfolio is not decoration. It helps another person assess your skills. Make the evidence easy to understand and easy to verify.`,
+
+"Create a 90-Day Learning Plan":`## Learning objectives
+You will turn a broad career goal into a focused 90-day learning plan with measurable practice.
+
+## Choose one target
+Do not try to become a web developer, cloud engineer, cybersecurity analyst and data scientist simultaneously. Choose one primary target for the next 90 days.
+
+## Define foundations
+List the few skills that appear repeatedly in entry-level descriptions for that role. Limit yourself to a manageable set.
+
+## Weekly structure
+Use a repeating pattern: learn a concept, practice it, build something with it, then review what failed.
+
+## Project milestone
+Choose one project that can be completed within the period. Break it into milestones rather than waiting until the last week.
+
+## Measure progress
+Track completed exercises, project milestones and explanations you can give without notes. Hours spent are less useful than evidence of capability.
+
+## Final activity
+Create a 13-week plan. For each week, write one learning objective and one output. Include at least one review week and one final portfolio milestone.
+
+## Key takeaways
+A focused plan beats a large list of courses. Pick one direction, practice consistently and produce evidence that shows what you can do.`
+
 };
