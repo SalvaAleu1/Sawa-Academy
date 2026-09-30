@@ -14,7 +14,7 @@ export default async function AdminProfile(){
     <div className="card" style={{maxWidth:680}}>
       <h2>Account settings</h2>
       <p>Update your administrator profile or change your password. Your administrator role cannot be changed from this page.</p>
-      <ProfileSettings name={user.name} email={user.email}/>
+      <ProfileSettings name={user.name} email={user.email} changePasswordHref="/admin/profile/change-password"/>
     </div>
   </div>;
 }
